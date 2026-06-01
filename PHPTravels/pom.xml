@@ -7,66 +7,36 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
+
+		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Source:
-		https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
-		<dependency>
-			<groupId>net.masterthought</groupId>
-			<artifactId>cucumber-reporting</artifactId>
-			<version>5.11.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<!-- Source:
-		https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>7.34.3</version>
-			<scope>compile</scope>
-		</dependency>
 
 		<!-- Selenium -->
-
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.44.0</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- Cucumber -->
-
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.14.0</version>
+			<version>7.22.1</version>
 		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>7.14.0</version>
-		</dependency>
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
-			<version>7.14.0</version>
-		</dependency>
-		<!-- Source:
-		https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>7.34.3</version>
-			<scope>test</scope>
+			<version>7.22.1</version>
 		</dependency>
 
 		<!-- TestNG -->
-
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -75,7 +45,6 @@
 		</dependency>
 
 		<!-- WebDriverManager -->
-
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
@@ -83,7 +52,6 @@
 		</dependency>
 
 		<!-- Apache POI -->
-
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
@@ -91,12 +59,13 @@
 		</dependency>
 
 		<!-- Extent Reports -->
-
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>5.1.1</version>
 		</dependency>
+
+		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -109,24 +78,12 @@
 			<version>2.0.13</version>
 		</dependency>
 
-
+		<!-- Cucumber Reporting -->
 		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>7.22.1</version>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>5.11.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>7.22.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>7.12.0</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 </project>
