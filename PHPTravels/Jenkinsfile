@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+		
+		stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/2002Umesh/Wipro-Training'
+            }
+        }
 
         stage('Build') {
             steps {
