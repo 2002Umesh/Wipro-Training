@@ -22,8 +22,9 @@ public class HotelSearchPage {
 //	By rooms = By.xpath("/html/body/div[2]/div[3]/div/div/div[1]/div/div/form/div[2]/div[1]/div/div[1]");
     
 	By stay = By.xpath("(//span[contains(.,'Stays')])[2]");
-	By nationality = By.xpath("(//div[@class='input cursor-pointer flex items-center justify-between'])[8]");
-	By searchButton = By.xpath("(//button[contains(@type,'submit')])[3]");
+//	By nationality = By.xpath("(//div[@class='input cursor-pointer flex items-center justify-between'])[8]");
+	By nationality = By.xpath("(//div[@class='field-box pr-9 cursor-pointer'])[6]");
+	By searchButton = By.xpath("(//button[contains(@type,'submit')])[4]");
 	By selectCity = By.xpath("(//span[@class='text-sm font-semibold text-gray-900 truncate'][normalize-space()='Dubai'])[1]");
 
 
