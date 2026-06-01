@@ -6,13 +6,15 @@ pipeline {
         jdk 'JDK'
     }
     
-    stage('Checkout') {
+
+
+    stages {
+		
+		stage('Checkout') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/2002Umesh/Wipro-Training'
             }
-
-    stages {
 
         stage('Build') {
             steps {
