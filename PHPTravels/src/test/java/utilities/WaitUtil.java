@@ -6,6 +6,18 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
 public class WaitUtil {
+	public static void waitForInvisible(
+	        WebDriver driver,
+	        By locator) {
+
+	    WebDriverWait wait =
+	            new WebDriverWait(driver,
+	                    Duration.ofSeconds(20));
+
+	    wait.until(
+	            ExpectedConditions
+	                    .invisibilityOfElementLocated(locator));
+	}
 
     public static WebElement waitForClickable(
             WebDriver driver,

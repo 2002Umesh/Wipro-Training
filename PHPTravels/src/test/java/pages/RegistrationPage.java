@@ -11,7 +11,8 @@ import utilities.WaitUtil;
 public class RegistrationPage {
 	WebDriver driver = DriverFactory.getDriver();
 	Actions ac = new Actions(driver);
-
+	
+	By loader = By.id("page-loader");
 	By ack = By.id("acknowledgeDemoWarning");
 	By regbtn = By.xpath("(//span[contains(text(),'Signup')])[1]");
 	By cus = By.xpath("(//span[contains(text(),'Customer Signup')])[1]");
@@ -36,6 +37,8 @@ public class RegistrationPage {
 
 	public void home() {
 		driver.get("https://phptravels.net");
+		
+		 WaitUtil.waitForInvisible(driver, loader);
 //		driver.findElement(By.id("acknowledgeDemoWarning")).click();
 		WaitUtil.waitForClickable(driver, ack).click();
 	}
