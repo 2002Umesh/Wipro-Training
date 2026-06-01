@@ -5,6 +5,12 @@ pipeline {
         maven 'Maven3'
         jdk 'JDK'
     }
+    
+    stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/2002Umesh/Wipro-Training/Cucumber_BBD'
+            }
 
     stages {
 
