@@ -10,31 +10,39 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/2002Umesh/Wipro-Training.git'
+                    url: 'https://github.com/2002Umesh/Wipro-Traininga/tree/main/PHPTravels'
             }
         }
  
         stage('Build') {
             steps {
-                bat 'mvn clean'
+                dir('PHPTravels') {
+                    bat 'mvn clean'
+                }
             }
         }
  
         stage('Compile') {
             steps {
-                bat 'mvn compile'
+                dir('PHPTravels') {
+                    bat 'mvn compile'
+                }
             }
         }
  
         stage('Test') {
             steps {
-                bat 'mvn test'
+                dir('PHPTravels') {
+                    bat 'mvn test'
+                }
             }
         }
  
         stage('Package') {
             steps {
-                bat 'mvn package'
+                dir('PHPTravels') {
+                    bat 'mvn package'
+                }
             }
         }
     }
@@ -49,4 +57,3 @@ pipeline {
         }
     }
 }
- 
