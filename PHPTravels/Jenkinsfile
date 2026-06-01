@@ -1,19 +1,12 @@
 pipeline {
     agent any
- 
+
     tools {
         maven 'Maven3'
     }
- 
+
     stages {
- 
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/2002Umesh/Wipro-Training/PHPTravels'
-            }
-        }
- 
+
         stage('Build') {
             steps {
                 dir('PHPTravels') {
@@ -21,7 +14,7 @@ pipeline {
                 }
             }
         }
- 
+
         stage('Compile') {
             steps {
                 dir('PHPTravels') {
@@ -29,7 +22,7 @@ pipeline {
                 }
             }
         }
- 
+
         stage('Test') {
             steps {
                 dir('PHPTravels') {
@@ -37,7 +30,7 @@ pipeline {
                 }
             }
         }
- 
+
         stage('Package') {
             steps {
                 dir('PHPTravels') {
@@ -46,12 +39,12 @@ pipeline {
             }
         }
     }
- 
+
     post {
         success {
             echo 'Build Successful'
         }
- 
+
         failure {
             echo 'Build Failed'
         }
