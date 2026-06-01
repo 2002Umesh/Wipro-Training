@@ -14,4 +14,4 @@ Feature: Registration Module
 
     Examples:
       | firstname | lastname | email             | password  | confirm_password |
-      | abc       | xyz      | ac125mp@gmail.com | 123Asd!@# | 123Asd!@#        |
+      | abc       | xyz      | ac135mp@gmail.com | 123Asd!@# | 123Asd!@#        |

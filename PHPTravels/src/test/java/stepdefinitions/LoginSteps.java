@@ -3,10 +3,12 @@ package stepdefinitions;
 import io.cucumber.java.en.*;
 
 import pages.LoginPage;
+import utilities.ExcelUtil;
 
 public class LoginSteps {
 
 	LoginPage login = new LoginPage();
+	ExcelUtil excel = new ExcelUtil("src/test/resources/testdata/LogData.xlsx");
 
 	@Given("user launches browser and click login")
 
@@ -14,13 +16,15 @@ public class LoginSteps {
 		login.lg();
 	}
 
-	@When("user enters {string} and {string}")
+	@When("user enters username and password")
 
-	public void enterCredentials(
+	public void enterCredentials() {
+		String username = excel.getCellData("sheet1", 1, 0);
 
-			String user, String pass) {
+		String password = excel.getCellData("sheet1", 1, 1);
 
-		login.login(user, pass);
+		login.login(username, password);
+
 	}
 
 	@And("clicks on login button")

@@ -15,15 +15,15 @@ public class BookingSteps {
 
 		booking.selectHotel();
 
-//		booking.travellerDetails("John Doe");
+
 
 	}
 
-	@And("user completes booking")
+	@And("user completes booking {string} {string} {string} {string}")
 
-	public void bookingFlow() {
+	public void bookingFlow(String fname, String lname, String email, String phonenum) {
 
-		booking.confirmBooking();
+		booking.confirmBooking(fname,lname,email,phonenum);
 
 	}
 

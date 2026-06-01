@@ -4,87 +4,68 @@ import org.openqa.selenium.*;
 
 public class ExceptionUtil {
 
-    public static WebElement
-    retryStaleElement(
+	public static WebElement retryStaleElement(
 
-            WebDriver driver,
-            By locator) {
+			WebDriver driver, By locator) {
 
-        int attempts = 0;
+		int attempts = 0;
 
-        while(attempts < 3) {
+		while (attempts < 3) {
 
-            try {
+			try {
 
-                return driver.findElement(
-                        locator);
+				return driver.findElement(locator);
 
-            }
+			}
 
-            catch(
-                    StaleElementReferenceException e) {
+			catch (StaleElementReferenceException e) {
 
-                attempts++;
-            }
-        }
+				attempts++;
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public static void
-    safeClick(
+	public static void safeClick(
 
-            WebDriver driver,
-            By locator) {
+			WebDriver driver, By locator) {
 
-        try {
+		try {
 
-            WaitUtil
-                    .waitForClickable(
-                            driver,
-                            locator)
-                    .click();
+			WaitUtil.waitForClickable(driver, locator).click();
 
-        }
+		}
 
-        catch(
-                ElementClickInterceptedException e) {
+		catch (ElementClickInterceptedException e) {
 
-            JavascriptExecutor js =
+			JavascriptExecutor js =
 
-                    (JavascriptExecutor)
-                            driver;
+					(JavascriptExecutor) driver;
 
-            js.executeScript(
+			js.executeScript(
 
-                    "arguments[0].click();",
+					"arguments[0].click();",
 
-                    driver.findElement(
-                            locator));
-        }
-    }
+					driver.findElement(locator));
+		}
+	}
 
-    public static WebElement
-    safeFind(
+	public static WebElement safeFind(
 
-            WebDriver driver,
-            By locator) {
+			WebDriver driver, By locator) {
 
-        try {
+		try {
 
-            return WaitUtil
-                    .waitForVisible(
-                            driver,
-                            locator);
+			return WaitUtil.waitForVisible(driver, locator);
 
-        }
+		}
 
-        catch(
+		catch (
 
-                NoSuchElementException |
-                TimeoutException e) {
+				NoSuchElementException | TimeoutException e) {
 
-            return null;
-        }
-    }
+			return null;
+		}
+	}
 }
