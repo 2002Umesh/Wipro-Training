@@ -34,12 +34,14 @@ public class LoginPage {
 
 	public void enterPassword(String pass) {
 
-		driver.findElement(password).sendKeys(pass);
+//		driver.findElement(password).sendKeys(pass);
+		WaitUtil.waitForVisible(driver, password).sendKeys(pass);
 	}
 
 	public void clickLogin() {
 
-		driver.findElement(loginButton).click();
+//		driver.findElement(loginButton).click();
+		WaitUtil.waitForClickable(driver, loginButton).click();
 	}
 
 	public void login(
