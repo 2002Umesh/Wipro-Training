@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = "src/test/resources/myFeatures",
     glue = {"myStepDefination"},
-    tags = "@Regression",
+//    tags = "@Regression",
     plugin = {
         "pretty",
         "html:target/htmlreports/report.html",
