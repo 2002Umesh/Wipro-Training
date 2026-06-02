@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.annotations.Listeners;
 
@@ -24,6 +25,15 @@ public class StepDefinations {
 	@Before
 	public void setup() {
 
+		ChromeOptions options = new ChromeOptions();
+
+		// Required for Docker/Linux containers
+		options.addArguments("--headless=new");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--disable-gpu");
+		options.addArguments("--window-size=1920,1080");
+
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
@@ -36,7 +46,9 @@ public class StepDefinations {
 	@After
 	public void tearDown() {
 
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 	@Given("OpenCart home page is open")

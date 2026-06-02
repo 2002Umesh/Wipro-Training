@@ -15,32 +15,10 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build & Test') {
             steps {
                 dir('Cucumber_BBD') {
-                    bat 'mvn clean'
-                }
-            }
-        }
-
-        stage('Compile') {
-            steps {
-                dir('Cucumber_BBD') {
-                    bat 'mvn compile'
-                }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                dir('Cucumber_BBD') {
-                    bat 'mvn test'
-                }
-            }
-
-            post {
-                always {
-                    junit '**/target/surefire-reports/*.xml'
+                    bat 'mvn clean test'
                 }
             }
         }
@@ -60,17 +38,13 @@ pipeline {
                 }
             }
         }
-
-        stage('Docker Run') {
-            steps {
-                dir('Cucumber_BBD') {
-                    bat 'docker run --rm cucumber-framework'
-                }
-            }
-        }
     }
 
     post {
+        always {
+            junit '**/target/surefire-reports/*.xml'
+        }
+
         success {
             echo 'Build Successful'
         }
