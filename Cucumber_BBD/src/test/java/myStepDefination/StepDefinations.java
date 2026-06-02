@@ -260,25 +260,19 @@ public class StepDefinations {
 //		List<WebElement> products = driver.findElements(By.cssSelector("div.product-thumb"));
 //
 //		products.get(1).click();
-		
-		  pom.productDetail();
 
-		    wait.until(
-		        ExpectedConditions.visibilityOfElementLocated(
-		            By.id("button-cart")));
+		pom.productDetail(0);
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("button-cart")));
 	}
 
 	@And("adds product to cart")
 	public void cart() {
 
 //		driver.findElement(By.id("button-cart")).click();
-	    WebElement cartBtn =
-	            wait.until(
-	            ExpectedConditions
-	            .elementToBeClickable(
-	                    By.id("button-cart")));
+		WebElement cartBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("button-cart")));
 
-	    cartBtn.click();
+		cartBtn.click();
 	}
 
 	@Then("cart should update")
@@ -291,18 +285,8 @@ public class StepDefinations {
 	@When("opens shopping cart")
 	public void open_cart() {
 		driver.navigate().back();
-		  List<WebElement> products = wait.until(
-		            ExpectedConditions.visibilityOfAllElementsLocatedBy(
-		                    By.cssSelector("div.product-thumb h4")));
-		products.get(2).click();
-//		cart();
-	    WebElement cartBtn =
-	            wait.until(
-	            ExpectedConditions
-	            .elementToBeClickable(
-	                    By.id("button-cart")));
-
-	    cartBtn.click();
+		pom.productDetail(2);
+		cart();
 
 //		driver.navigate().back();
 //
@@ -325,16 +309,15 @@ public class StepDefinations {
 	public void checkout() {
 
 //		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Checkout"))).click();
-		   By checkout = By.linkText("Checkout");
+		By checkout = By.linkText("Checkout");
 
-		    for (int i = 0; i < 3; i++) {
-		        try {
-		            wait.until(ExpectedConditions.elementToBeClickable(checkout))
-		                    .click();
-		            break;
-		        } catch (StaleElementReferenceException e) {
-		        }
-		    }
+		for (int i = 0; i < 3; i++) {
+			try {
+				wait.until(ExpectedConditions.elementToBeClickable(checkout)).click();
+				break;
+			} catch (StaleElementReferenceException e) {
+			}
+		}
 	}
 
 	@Then("cart operations should complete")

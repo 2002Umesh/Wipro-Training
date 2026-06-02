@@ -61,14 +61,14 @@ public class POM_pages {
 	        s.sendKeys(Keys.ENTER);
 	}
 
-	public void productDetail() {
+	public void productDetail(int val) {
 //		List<WebElement> products = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(search_products));
 //		products.get(1).click();
 	    List<WebElement> products =
 	            wait.until(ExpectedConditions
 	            .visibilityOfAllElementsLocatedBy(product_links));
 
-	        products.get(0).click();
+	        products.get(val).click();
 
 	}
 
