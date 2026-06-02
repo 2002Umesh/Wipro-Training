@@ -58,10 +58,15 @@ pipeline {
         stage('Docker Run') {
             steps {
                 dir('Cucumber_BBD') {
-                    bat 'docker run --rm cucumber-framework'
+                    bat 'docker run cucumber-framework'
                 }
             }
         }
+            post {
+        always {
+            junit '*/target/surefire-reports/.xml'
+        }
+    }
     }
 
     post {
