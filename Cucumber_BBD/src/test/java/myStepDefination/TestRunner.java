@@ -1,10 +1,12 @@
 package myStepDefination;
 
-import org.junit.runner.RunWith;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+//import org.junit.runner.RunWith;
+//import io.cucumber.junit.Cucumber;
+//import io.cucumber.junit.CucumberOptions;
+import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 
-@RunWith(Cucumber.class)
+//@RunWith(Cucumber.class)
 @CucumberOptions(
     features = "src/test/resources/myFeatures",
     glue = {"myStepDefination"},
@@ -17,6 +19,6 @@ import io.cucumber.junit.CucumberOptions;
     }
 )
 
-public class TestRunner {
+public class TestRunner extends AbstractTestNGCucumberTests{
 
 }

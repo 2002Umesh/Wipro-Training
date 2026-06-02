@@ -1,5 +1,10 @@
 package stepdefinitions;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+
+import base.DriverFactory;
 import io.cucumber.java.en.*;
 
 import pages.BookingPage;
@@ -10,12 +15,9 @@ public class BookingSteps {
 
 	@When("user choose a hotel")
 
-	public void chooseHotel()
-	{
+	public void chooseHotel() {
 
 		booking.selectHotel();
-
-
 
 	}
 
@@ -23,7 +25,7 @@ public class BookingSteps {
 
 	public void bookingFlow(String fname, String lname, String email, String phonenum) {
 
-		booking.confirmBooking(fname,lname,email,phonenum);
+		booking.confirmBooking(fname, lname, email, phonenum);
 
 	}
 
@@ -31,6 +33,25 @@ public class BookingSteps {
 
 	public void logout() {
 
-		booking.logout();
+		SoftAssert soft = new SoftAssert();
+
+
+		String msg = booking.getConfirmationMessage();
+
+		// Critical
+		Assert.assertTrue(msg.contains("Booking Confirmed Successfully!"), "Booking Failed");
+		
+//		System.out.println("URL: " + DriverFactory.getDriver().getCurrentUrl());
+//		System.out.println("Title: " + DriverFactory.getDriver().getTitle());
+//		System.out.println(DriverFactory.getDriver().findElement(By.xpath("//h3")).toString());
+		// Additional validations
+		soft.assertTrue(DriverFactory.getDriver().getCurrentUrl().contains("invoice"), "Booking URL mismatch");
+
+		soft.assertTrue(DriverFactory.getDriver().getTitle().contains("PHPTRAVELS"),
+				"Booking page missing");
+
+		soft.assertAll();
+
+		System.out.println("Booking Confirmed");
 	}
 }

@@ -7,37 +7,42 @@ import utilities.ScreenshotUtil;
 
 public class TestListener implements ITestListener {
 
-	public void onTestStart(ITestResult result) {
+    public void onTestStart(ITestResult result) {
 
-		System.out.println(
+        System.out.println(
+                "Started : " + result.getName());
+    }
 
-				"Started : " + result.getName());
-	}
+    public void onTestSuccess(ITestResult result) {
 
-	public void onTestSuccess(ITestResult result) {
+        System.out.println("PASS Listener Triggered");
 
-		ScreenshotUtil.captureScreenshot(
+        ScreenshotUtil.captureScreenshot(
+                DriverFactory.getDriver(),
+                result.getName());
 
-				DriverFactory.getDriver(),
+        DriverFactory.quitDriver();
+    }
 
-				result.getName());
-	}
+    public void onTestFailure(ITestResult result) {
 
-	public void onTestFailure(ITestResult result) {
+        System.out.println("FAIL Listener Triggered");
 
-		ScreenshotUtil.captureScreenshot(
+        ScreenshotUtil.captureScreenshot(
+                DriverFactory.getDriver(),
+                result.getName());
 
-				DriverFactory.getDriver(),
+        DriverFactory.quitDriver();
+    }
 
-				result.getName());
-	}
+    public void onTestSkipped(ITestResult result) {
 
-	public void onTestSkipped(ITestResult result) {
+        System.out.println("SKIP Listener Triggered");
 
-		ScreenshotUtil.captureScreenshot(
+        ScreenshotUtil.captureScreenshot(
+                DriverFactory.getDriver(),
+                result.getName());
 
-				DriverFactory.getDriver(),
-
-				result.getName());
-	}
+        DriverFactory.quitDriver();
+    }
 }

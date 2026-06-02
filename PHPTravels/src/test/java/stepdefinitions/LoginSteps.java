@@ -1,5 +1,10 @@
 package stepdefinitions;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+
+import base.DriverFactory;
 import io.cucumber.java.en.*;
 
 import pages.LoginPage;
@@ -37,7 +42,22 @@ public class LoginSteps {
 	@Then("validate login result")
 
 	public void validateLogin() {
+		SoftAssert soft = new SoftAssert();
+//		System.out.println(DriverFactory.getDriver().getCurrentUrl());
+//		System.out.println(DriverFactory.getDriver().getTitle());
+//		System.out.println(DriverFactory.getDriver().findElement(By.xpath("//h2")).toString());
+		// Critical validation
+		Assert.assertTrue(DriverFactory.getDriver().getCurrentUrl().contains("login"), "Login Failed");
+
+		// Additional validations
+		soft.assertTrue(DriverFactory.getDriver().getTitle().contains("Login"), "Login title mismatch");
+
+		soft.assertTrue(DriverFactory.getDriver().findElement(By.xpath("//h2")).isDisplayed(),
+				"Login heading missing");
+
+		soft.assertAll();
 
 		System.out.println("Login Validated");
+
 	}
 }

@@ -1,5 +1,10 @@
 package stepdefinitions;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+
+import base.DriverFactory;
 import io.cucumber.java.en.*;
 
 import pages.RegistrationPage;
@@ -43,6 +48,35 @@ public class RegistrationSteps {
 
 	@Then("registration should complete")
 	public void registration_should_complete() {
-		System.out.println("Registration successful");
+	    SoftAssert soft = new SoftAssert();
+
+	    String url =
+	            DriverFactory.getDriver()
+	                    .getCurrentUrl();
+//		System.out.println(url);
+//		System.out.println(DriverFactory.getDriver().getTitle());
+//		System.out.println(DriverFactory.getDriver().findElement(By.xpath("//h2")).toString());
+
+	    // Critical
+	    Assert.assertTrue(
+	            url.contains("signup"),
+	            "Registration Failed");
+
+	    // Extra validations
+	    soft.assertTrue(
+	            DriverFactory.getDriver()
+	                    .getTitle()
+	                    .contains("Signup"),
+	            "Title mismatch");
+
+	    soft.assertTrue(
+	            DriverFactory.getDriver()
+	                    .findElement(By.xpath("//body"))
+	                    .isDisplayed(),
+	            "Page not displayed");
+
+	    soft.assertAll();
+
+	    System.out.println("Registration successful");
 	}
 }

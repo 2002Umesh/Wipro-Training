@@ -22,10 +22,10 @@ public class Hooks {
 				config.getProperty("url"));
 	}
 
-	@After
-
-	public void tearDown() {
-
-		DriverFactory.quitDriver();
-	}
+//	@After
+//
+//	public void tearDown() {
+//
+//		DriverFactory.quitDriver();
+//	}
 }

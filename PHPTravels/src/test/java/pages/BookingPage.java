@@ -1,10 +1,13 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.DriverFactory;
 import utilities.WaitUtil;
@@ -53,6 +56,8 @@ public class BookingPage {
 
 	By confirmFinalBooking = By.xpath("//button[contains(.,'Confirm Booking')]");
 
+	By successMsg = By.id("successMessage");
+
 	public void selectHotel() {
 //driver.navigate().to("https://phptravels.net/stay/burj-al-arab/200/hotels/_/30-05-2026/31-05-2026/IN/1/1-0");
 //        JavascriptExecutor js =
@@ -69,7 +74,7 @@ public class BookingPage {
 //                hotel);
 	}
 
-	public void confirmBooking(String fname,String lname,String e,String phonenum) {
+	public void confirmBooking(String fname, String lname, String e, String phonenum) {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
@@ -134,7 +139,19 @@ public class BookingPage {
 		js.executeScript("arguments[0].click();", confirmBtn);
 	}
 
-	public void logout() {
+	public String getConfirmationMessage() {
 
+		try {
+
+			WebElement msg = WaitUtil.waitForVisible(driver, successMsg);
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+			 wait.until(d -> !msg.getText().trim().isEmpty());
+
+			return msg.getText();
+
+		} catch (Exception e) {
+
+			return "";
+		}
 	}
 }
