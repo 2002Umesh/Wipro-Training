@@ -36,7 +36,7 @@ public class StepDefinations {
 	@After
 	public void tearDown() {
 
-//		driver.quit();
+		driver.quit();
 	}
 
 	@Given("OpenCart home page is open")
@@ -295,7 +295,14 @@ public class StepDefinations {
 		            ExpectedConditions.visibilityOfAllElementsLocatedBy(
 		                    By.cssSelector("div.product-thumb h4")));
 		products.get(2).click();
-		cart();
+//		cart();
+	    WebElement cartBtn =
+	            wait.until(
+	            ExpectedConditions
+	            .elementToBeClickable(
+	                    By.id("button-cart")));
+
+	    cartBtn.click();
 
 //		driver.navigate().back();
 //
