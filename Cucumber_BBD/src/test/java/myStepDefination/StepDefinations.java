@@ -36,7 +36,7 @@ public class StepDefinations {
 	@After
 	public void tearDown() {
 
-		driver.quit();
+//		driver.quit();
 	}
 
 	@Given("OpenCart home page is open")
@@ -221,7 +221,16 @@ public class StepDefinations {
 
 	@Then("address should update")
 	public void add_ok() {
-
+		js.executeScript("window.scrollBy(0,500)");
+		WebElement c = driver.findElement(By.name("country_id"));
+		c.click();
+		c.sendKeys(Keys.ARROW_UP);
+		c.sendKeys(Keys.ENTER);
+		WebElement z = driver.findElement(By.name("zone_id"));
+		z.click();
+		z.sendKeys(Keys.ARROW_DOWN);
+		z.sendKeys(Keys.ENTER);
+		driver.findElement(By.cssSelector("input[value='Continue']")).click();
 		System.out.println("Address updated");
 	}
 
@@ -248,15 +257,28 @@ public class StepDefinations {
 	@And("opens product detail")
 	public void detail() {
 
-		List<WebElement> products = driver.findElements(By.cssSelector("div.product-thumb"));
+//		List<WebElement> products = driver.findElements(By.cssSelector("div.product-thumb"));
+//
+//		products.get(1).click();
+		
+		  pom.productDetail();
 
-		products.get(1).click();
+		    wait.until(
+		        ExpectedConditions.visibilityOfElementLocated(
+		            By.id("button-cart")));
 	}
 
 	@And("adds product to cart")
 	public void cart() {
 
-		driver.findElement(By.id("button-cart")).click();
+//		driver.findElement(By.id("button-cart")).click();
+	    WebElement cartBtn =
+	            wait.until(
+	            ExpectedConditions
+	            .elementToBeClickable(
+	                    By.id("button-cart")));
+
+	    cartBtn.click();
 	}
 
 	@Then("cart should update")
@@ -269,11 +291,16 @@ public class StepDefinations {
 	@When("opens shopping cart")
 	public void open_cart() {
 		driver.navigate().back();
-		List<WebElement> products = driver.findElements(By.cssSelector("div.product-thumb"));
+		List<WebElement> products = driver.findElements(By.cssSelector("div.product-thumb h4"));
 
 		products.get(2).click();
 		cart();
 
+//		driver.navigate().back();
+//
+//		pom.productDetail();
+//
+//		cart();
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[title='Shopping Cart']"))).click();
 	}
 
@@ -289,7 +316,17 @@ public class StepDefinations {
 	@And("proceeds checkout")
 	public void checkout() {
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Checkout"))).click();
+//		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Checkout"))).click();
+		   By checkout = By.linkText("Checkout");
+
+		    for (int i = 0; i < 3; i++) {
+		        try {
+		            wait.until(ExpectedConditions.elementToBeClickable(checkout))
+		                    .click();
+		            break;
+		        } catch (StaleElementReferenceException e) {
+		        }
+		    }
 	}
 
 	@Then("cart operations should complete")

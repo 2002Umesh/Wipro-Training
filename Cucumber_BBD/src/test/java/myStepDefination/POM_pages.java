@@ -22,6 +22,8 @@ public class POM_pages {
 	By account = By.cssSelector("a[title='My Account']");
 	By search = By.cssSelector("input[name='search']");
 	By search_products = By.cssSelector("div[class='product-thumb']");
+	By product_links =
+	        By.cssSelector("div.product-thumb h4 a");
 
 	POM_pages(WebDriver driver) {
 		this.driver = driver;
@@ -60,8 +62,13 @@ public class POM_pages {
 	}
 
 	public void productDetail() {
-		List<WebElement> products = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(search_products));
-		products.get(1).click();
+//		List<WebElement> products = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(search_products));
+//		products.get(1).click();
+	    List<WebElement> products =
+	            wait.until(ExpectedConditions
+	            .visibilityOfAllElementsLocatedBy(product_links));
+
+	        products.get(0).click();
 
 	}
 
