@@ -291,8 +291,9 @@ public class StepDefinations {
 	@When("opens shopping cart")
 	public void open_cart() {
 		driver.navigate().back();
-		List<WebElement> products = driver.findElements(By.cssSelector("div.product-thumb h4"));
-
+		  List<WebElement> products = wait.until(
+		            ExpectedConditions.visibilityOfAllElementsLocatedBy(
+		                    By.cssSelector("div.product-thumb h4")));
 		products.get(2).click();
 		cart();
 
