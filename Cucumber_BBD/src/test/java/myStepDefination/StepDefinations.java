@@ -34,7 +34,7 @@ public class StepDefinations {
 		options.addArguments("--disable-gpu");
 		options.addArguments("--window-size=1920,1080");
 
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
 		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
