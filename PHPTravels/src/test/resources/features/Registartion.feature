@@ -4,7 +4,7 @@ Feature: Registration Module
     Given PHPTravels home page is open
 
   @Smoke
-  Scenario: Validate Registration
+  Scenario Outline: Validate Registration
     Given user clicks Register option
     When enters necessary credentials "<firstname>" "<lastname>" "<email>" "<password>" "<confirm_password>"
     And enters security check value
