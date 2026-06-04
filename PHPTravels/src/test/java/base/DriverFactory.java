@@ -2,6 +2,7 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -16,7 +17,15 @@ public class DriverFactory {
 		if (browser.equalsIgnoreCase("chrome")) {
 
 			WebDriverManager.chromedriver().setup();
-
+//			ChromeOptions options = new ChromeOptions();
+//
+//			options.addArguments("--headless=new");
+//			options.addArguments("--window-size=1920,1080");
+//			options.addArguments("--start-maximized");
+//			options.addArguments("--disable-dev-shm-usage");
+//			options.addArguments("--no-sandbox");
+//
+//			driver.set(new ChromeDriver(options));
 			driver.set(new ChromeDriver());
 
 		}

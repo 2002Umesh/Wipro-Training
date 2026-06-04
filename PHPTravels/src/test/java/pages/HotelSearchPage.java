@@ -23,7 +23,7 @@ public class HotelSearchPage {
 
 //	By rooms = By.xpath("/html/body/div[2]/div[3]/div/div/div[1]/div/div/form/div[2]/div[1]/div/div[1]");
     
-	By stay = By.xpath("(//span[contains(.,'Stays')])[2]");
+	By stay = By.xpath("//span[normalize-space()='Stays']");
 //	By nationality = By.xpath("(//div[@class='input cursor-pointer flex items-center justify-between'])[8]");
 	By nationality = By.xpath("//div[contains(@class,'cursor-pointer') and contains(.,'Nationality')]");
 	By searchButton = By.xpath("//button[contains(@type,'submit') and @title='Search Hotels']");
@@ -34,6 +34,9 @@ public class HotelSearchPage {
 			By.xpath("//div[@class='hotel-card-animate']");
 
 	public void enterDestination(String destination) {
+//		WebElement stays = WaitUtil.waitForVisible(driver, stay);
+//		  ((JavascriptExecutor) driver)
+//          .executeScript("arguments[0].scrollIntoView(true);", stays);
 		WaitUtil.waitForVisible(driver, stay).click();
 
 		WaitUtil.waitForVisible(driver, city).sendKeys(destination);
